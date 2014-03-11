@@ -1,0 +1,24 @@
+<select ng-model = "query.category">
+  <option value = "">All Category</option>
+  <option ng-repeat = "cat in catlist">{{cat}}</option>
+</select>
+
+<select ng-model = "query.portfolioID">
+  <option value = "">All Portfolio</option>
+  <option ng-repeat = "portfolioID in portfolioIDlist">{{portfolioID}}</option>
+</select>
+
+<br />
+
+<input type = 'radio' ng-model = 'readstatus' value = 'read'>read</input><br />
+<input type = 'radio' ng-model = 'readstatus' value = 'unread'>unread</input><br />
+<input type = 'radio' ng-model = 'readstatus' value = 'all'>all</input><br />
+
+<table>
+  <thead><td>Name</td><td>portfolioID</td><td>Category</td></thead>
+  <tr ng-repeat = "doc in doclist | filter : query" ng-show = "'{{doc.read}} == '{{readstatus}}'">
+    <td>{{ doc.name }}</td>
+    <td>{{ doc.portfolioID }}</td>
+    <td>{{ doc.category }}</td>
+  </tr>
+</table>
